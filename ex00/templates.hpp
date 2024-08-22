@@ -18,7 +18,7 @@ T const & min(T const &x, T const &y)
 }
 
 template <typename T> 
-T max(T const & x, T const & y)
+T const max(T const & x, T const & y)
 {
     return (y>=x ? y : x );
 }
