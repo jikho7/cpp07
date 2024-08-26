@@ -1,5 +1,5 @@
 NAME = iter
-CXXFLAGS = -Wextra -Wall -Werror -std=c++98
+CXXFLAGS = -Wextra -Wall -Werror -fsanitize=address -std=c++98
 SRC = main.cpp
 OBJ = ${SRC:%.cpp=%.o}
 CXX = g++
