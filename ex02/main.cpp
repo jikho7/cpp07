@@ -48,7 +48,15 @@ int main()
     std::cout << "size charArray : " << charArray.size() << std::endl;
     std::cout << "size floatArray : " << floatArray.size() << std::endl;
     std::cout << "size doubleArray : " << doubleArray.size() << std::endl;
+    std::cout << std::endl;
 
+    std::cout << "operator [] test " << std::endl;
 
+    doubleArray[0] = 1.1f;
+    doubleArray[1] = 2.2f;
+    doubleArray[2] = -51.1f;
+    doubleArray[3] = 33.2f;
+
+    doubleArray.print();
     return (0);
 }
