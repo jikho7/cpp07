@@ -16,13 +16,13 @@ void decrement(T &it)
 }
 
 template <typename T>
-void print(T element)
+void print(const T element)
 {
     std::cout << element << " ";
 }
 
-template <typename T, typename F>
-void iter(T *array, int size, F function)
+template <typename T>
+void iter(T *array, int size, void (*function) (T))
 {
     for (int i = 0 ; i < size ; i++)
     {

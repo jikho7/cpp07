@@ -1,46 +1,33 @@
 #include "iter.hpp"
 #include <iostream>
-
-int main()
+class Awesome
 {
-    int intArray[] = {-2, 0, 4, 8, 10};
-    size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
-    char charArray[] = {'a', 'b', 'u'};
-    size_t charArrayLength = sizeof(charArray) / sizeof(charArray[0]);
-    float floatArray[] = {-5.4f, 2.45f, 98.36f};
-    size_t floatArrayLength = sizeof(floatArray) / sizeof(floatArray[0]);
+  public:
+    Awesome( void ) : _n( 42 ) { return; }
+    int get( void ) const { return this->_n; }
+  private:
+    int _n;
+};
 
-    iter(intArray, intArrayLength, increment<int>);
-    //iter(intArray, intArrayLength, decrement<int>);
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+{
+  o << rhs.get();
+  return o;
+}
 
-    //iter(charArray, charArrayLength, increment<char>);
-    iter(charArray, charArrayLength, decrement<char>);
+template< typename T >
+void print(const T& x )
+{
+  std::cout << x << std::endl;
+  return;
+}
 
-    iter(floatArray, floatArrayLength, increment<float>);
-    //iter(floatArray, floatArrayLength, decrement<float>);
+int main() {
+  int tab[] = { 0, 1, 2, 3, 4 };
+  Awesome tab2[5];
 
-    std::cout << "intArray" << std::endl;
+  iter( tab, 5, print<const int> );
+  iter( tab2, 5, print<Awesome> );
 
-    for (size_t i = 0 ; i < intArrayLength ; i++)
-    {
-        print(intArray[i]);
-    }
-
-    std::cout << std::endl;
-    std::cout << "charArray" << std::endl;
-
-    for (size_t i = 0 ; i < charArrayLength ; i++)
-    {
-        print(charArray[i]);
-    }
-
-    std::cout << std::endl;
-    std::cout << "floatArray" << std::endl;
-
-    for (size_t i = 0 ; i < floatArrayLength ; i++)
-    {
-        print(floatArray[i]);
-    }
-
-    return (0);
+  return 0;
 }
