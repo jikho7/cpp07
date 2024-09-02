@@ -1,24 +1,6 @@
 #include "iter.hpp"
 #include <iostream>
 
-template <typename T>
-void increment(T &it)
-{
-    it += 5;
-}
-
-template <typename T>
-void decrement(T &it)
-{
-    it -= 1;
-}
-
-template <typename T>
-void print(T element)
-{
-    std::cout << element << " ";
-}
-
 int main()
 {
     int intArray[] = {-2, 0, 4, 8, 10};
@@ -29,13 +11,13 @@ int main()
     size_t floatArrayLength = sizeof(floatArray) / sizeof(floatArray[0]);
 
     iter(intArray, intArrayLength, increment<int>);
-    //iter(intArray, intArrayLength, decrement<int>);      
+    //iter(intArray, intArrayLength, decrement<int>);
 
     //iter(charArray, charArrayLength, increment<char>);
-    iter(charArray, charArrayLength, decrement<char>);  
+    iter(charArray, charArrayLength, decrement<char>);
 
     iter(floatArray, floatArrayLength, increment<float>);
-    //iter(floatArray, floatArrayLength, decrement<float>);  
+    //iter(floatArray, floatArrayLength, decrement<float>);
 
     std::cout << "intArray" << std::endl;
 

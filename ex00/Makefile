@@ -1,7 +1,7 @@
 NAME = template
 SRC = main.cpp
 OBJ := ${SRC:%.cpp=%.o}
-CXXFLAGS = -Werror -Wall -Wextra -std=c++98
+CXXFLAGS = -Werror -Wall -Wextra -std=c++98 -fsanitize=address
 CXX = g++
 
 all : ${NAME}
@@ -18,15 +18,3 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re
-
-
-
-
-
-
-
-
-
-
-
-

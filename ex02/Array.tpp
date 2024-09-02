@@ -1,11 +1,10 @@
 #include "Array.hpp"
 
-template<typename T> Array<T>::Array() : _ptr(NULL), _size(0) {}
+//##################################################################
+//                   Constructor && Destructor                     #
+//##################################################################
 
-template<typename T> Array<T>::~Array()
-{
-    delete[] this->_ptr;
-}
+template<typename T> Array<T>::Array() : _ptr(NULL), _size(0) {}
 
 template<typename T> Array<T>::Array(unsigned int n)
 {
@@ -15,6 +14,16 @@ template<typename T> Array<T>::Array(unsigned int n)
     for (unsigned int i = 0; i < _size; i++)
         _ptr[i] = 0;
 }
+
+template<typename T> Array<T>::~Array()
+{
+    delete[] this->_ptr;
+}
+
+
+//##################################################################
+//            Copy constructor and assignement copy                #
+//##################################################################
 
 template<typename T>
 Array<T>::Array(const Array &other) : _ptr(new T[other._size]), _size(other._size){
@@ -37,8 +46,29 @@ Array<T> Array<T>::operator=(const Array &other){
     return *this;
 }
 
+//##################################################################
+//                          SETTERS                                #
+//##################################################################
+
+//##################################################################
+//                          GETTERS                                #
+//##################################################################
+
 template<typename T>
-void Array<T>::print()
+T* Array<T>::getElement() const
+{
+    if (this->_ptr)
+        return(this->_ptr);
+    else
+        return (NULL);
+}
+
+//##################################################################
+//                           Methodes                              #
+//##################################################################
+
+template<typename T>
+void Array<T>::print() const
 {
     if (this->_ptr == NULL)
         std::cout << "Array is empty" << std::endl;
@@ -48,24 +78,6 @@ void Array<T>::print()
             std::cout << this->_ptr[i] << " ";
         std::cout << std::endl;
     }
-}
-
-template<typename T>
-T* Array<T>::getElement()
-{
-    if (this->_ptr)
-        return(this->_ptr);
-    else
-        return (NULL);
-}
-
-template <typename T>
-T& Array<T>::operator[](unsigned int index)
-{
-    if (index >= _size) {
-        throw outOfBoundsException();
-    }
-    return this->_ptr[index];
 }
 
 template <typename T>
@@ -80,4 +92,18 @@ unsigned int Array<T>::size() const
     }
     else
         return (0);
+}
+
+//##################################################################
+//                           Surcharges                            #
+//##################################################################
+
+template <typename T>
+T& Array<T>::operator[](unsigned int index)
+{
+    if (index >= _size) {
+
+        throw outOfBoundsException();
+    }
+    return this->_ptr[index];
 }
